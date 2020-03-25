@@ -1,10 +1,10 @@
 version: "3.7"
 services:
   streaming:
-    image: tiangolo/nginx-rtmp:latest
-    # build:
-    #   context: . 
-    #   dockerfile: Dockerfile
+    # image: tiangolo/nginx-rtmp:latest
+    build:
+      context: . 
+      dockerfile: Dockerfile
 
     container_name: nginx-streaming
     volumes:
@@ -12,9 +12,11 @@ services:
     - ./nginx:/etc/nginx
     - ./nginx-rtmp-module:/nginx-rtmp-module
     - ./script:/script/
+    - ./static:/usr/share/nginx/html
     ports:
     - "8080:8080"
     - "1935:1935"
     environment:
     - NGINX_PORT=8080
     command: "tail -f /dev/null"
+    # command: "./stream.sh"
