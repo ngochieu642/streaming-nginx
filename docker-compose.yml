@@ -6,7 +6,7 @@ services:
       context: . 
       dockerfile: Dockerfile
 
-    container_name: nginx-streaming
+    container_name: nginx-streaming-prebuilt
     volumes:
     - ./data:/mnt/hls
     - ./nginx:/etc/nginx
