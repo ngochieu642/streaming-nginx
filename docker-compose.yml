@@ -1,15 +1,17 @@
 version: "3.7"
 services:
   streaming:
-    build:
-      context: . 
-      dockerfile: Dockerfile
+    image: tiangolo/nginx-rtmp:latest
+    # build:
+    #   context: . 
+    #   dockerfile: Dockerfile
 
     container_name: nginx-streaming
     volumes:
     - ./data:/mnt/hls
     - ./nginx:/etc/nginx
     - ./nginx-rtmp-module:/nginx-rtmp-module
+    - ./script:/script/
     ports:
     - "8080:8080"
     - "1935:1935"
